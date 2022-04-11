@@ -20,8 +20,8 @@ class AdminDashboardController extends Controller
 
     /*
     Method Name:    index
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To display dashboard for admin after login
     Params:         []
     */
@@ -56,8 +56,8 @@ class AdminDashboardController extends Controller
 
     /*
     Method Name:    login
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        For Admin login form
     Params:         []
     */
@@ -97,8 +97,8 @@ class AdminDashboardController extends Controller
 
     /*
     Method Name:    authenticateUser
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        Admin login credentials check
     Params:         [email, password]
     */
@@ -122,8 +122,8 @@ class AdminDashboardController extends Controller
 
     /*
     Method Name:    logout
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        Logout Admin
     Params:
     */
@@ -135,8 +135,8 @@ class AdminDashboardController extends Controller
 
     /*
     Method Name:    resetPassword
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        Form for forgot password
     Params:
     */
@@ -152,8 +152,8 @@ class AdminDashboardController extends Controller
 
     /*
     Method Name:    resetPasswordLink
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        Send reset password link email if admin email exist
     Params:         [email]
     */
@@ -208,8 +208,8 @@ class AdminDashboardController extends Controller
 
     /*
     Method Name:    verifyResetPasswordToken
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        Checked reset access token
     Params:         [token]
     */
@@ -241,8 +241,8 @@ class AdminDashboardController extends Controller
 
     /*
     Method Name:    setNewPassword
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        Form to set new password after reset password
     Params:
     */
@@ -265,8 +265,8 @@ class AdminDashboardController extends Controller
 
     /*
     Method Name:    updateNewPassword
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To update new password after reset pasword
     Params:         [password]
     */
@@ -306,8 +306,8 @@ class AdminDashboardController extends Controller
 
     /*
     Method Name:    updateDetails
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To update admin details
     Params:         [adminemail, first_name, last_name, profile_pic]
     */
@@ -376,8 +376,8 @@ class AdminDashboardController extends Controller
 
     /*
     Method Name:    updatePassword
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To update admin password
     Params:         [oldpassword, newpassword]
     */

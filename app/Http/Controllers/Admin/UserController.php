@@ -15,8 +15,8 @@ class UserController extends Controller
 
     /*
     Method Name:    getList
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To get list of all users
     Params:
     */
@@ -54,7 +54,7 @@ class UserController extends Controller
 
     /*
     Method Name:    createDetail
-    Developer:      Shine Dezign
+    Developer:      Whmcs Global
     Created Date:   2021-05-19 (yyyy-mm-dd)
     Purpose:        To update user details
     Params:         [edit_record_id, first_name, last_name, email, role, status]
@@ -114,13 +114,13 @@ class UserController extends Controller
     /* End Method createDetail */
 
     /*
-    Method Name:    del_record
-    Developer:      Shine Dezign
+    Method Name:    delRecord
+    Developer:      Whmcs Global
     Created Date:   2021-08-09 (yyyy-mm-dd)
     Purpose:        To delete any user by id
     Params:         [id]
     */
-    public function del_record($id){
+    public function delRecord($id){
         try { 
             User::where('id',$id)->update(['is_deleted' => 1]);
         	return redirect()->back()->with('status', 'success')->with('message', 'User details '.Config::get('constants.SUCCESS.DELETE_DONE'));
@@ -128,16 +128,16 @@ class UserController extends Controller
             return redirect()->back()->with('status', 'error')->with('message', $ex->getMessage());
         }
     }
-    /* End Method del_record */
+    /* End Method delRecord */
 
     /*
-    Method Name:    del_restore
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Method Name:    delRestore
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To restore deleted user by id
     Params:         [id]
     */
-    public function del_restore($id){
+    public function delRestore($id){
         try {
             User::where('id',$id)->update(['is_deleted' => 0]);
         	return redirect()->back()->with('status', 'success')->with('message', 'User details '.Config::get('constants.SUCCESS.RESTORE_DONE'));
@@ -145,12 +145,12 @@ class UserController extends Controller
             return redirect()->back()->with('status', 'error')->with('message', $ex->getMessage());
         }
     }
-    /* End Method del_restore */
+    /* End Method delRestore */
 
     /*
-    Method Name:    update_record
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Method Name:    updateDetail
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To update user details
     Params:         [edit_record_id, first_name, last_name, address, dob, mobile, city, state, status]
     */
@@ -201,28 +201,28 @@ class UserController extends Controller
             }
         }
     }
-    /* End Method update_record */
+    /* End Method updateDetail */
 
     /*
-    Method Name:    change_password
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Method Name:    changePassword
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To update password form
     Params:         [id]
     */
-    public function change_password($id){
+    public function changePassword($id){
     	return view('admin.users.password', compact('id'));
     }
-    /* End Method change_password */
+    /* End Method changePassword */
 
     /*
-    Method Name:    update_password
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Method Name:    updatePassword
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To update password of user
     Params:         [password, password_confirmation]
     */
-    public function update_password(Request $request){
+    public function updatePassword(Request $request){
 		$id = $request->edit_record_id;
 		$request->validate([
 			'password' => 'required_with:password_confirmation|string|confirmed',
@@ -242,16 +242,16 @@ class UserController extends Controller
             return redirect()->back()->with('status', 'error')->with('message', $e->getMessage());
         }
     }
-    /* End Method update_password */ 
+    /* End Method updatePassword */ 
     
     /*
-    Method Name:    view_detail
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Method Name:    viewDetail
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To get detail of user
     Params:         [id]
     */
-    public function view_detail($id,Request $request){
+    public function viewDetail($id,Request $request){
         $userDetail = User::role('User')->find($id);
         
         if(!$userDetail)
@@ -259,12 +259,12 @@ class UserController extends Controller
 
         return view('admin.users.view_detail',compact('userDetail'));
     }
-    /* End Method view_detail */
+    /* End Method viewDetail */
 
     /*
-    Method Name:    change_status
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Method Name:    changeStatus
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To change the status of user[active/inactive]
     Params:         [id, status]
     */
@@ -278,5 +278,5 @@ class UserController extends Controller
         return response()->json(['success' => 'Status change successfully.','message' => 'User '.Config::get('constants.SUCCESS.STATUS_UPDATE')]);
     }
     
-    /* End Method view_detail */
+    /* End Method changeStatus */
 }

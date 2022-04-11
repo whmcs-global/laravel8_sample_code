@@ -16,8 +16,8 @@ class AutoResponderController extends Controller
 
     /*
     Method Name:    getList
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To get all added templates
     Params:         
     */
@@ -35,27 +35,27 @@ class AutoResponderController extends Controller
     /* End Method getList */
 
     /*
-    Method Name:    add_form
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Method Name:    addForm
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        Form to add new template
     Params:         
     */
-    public function add_form(){
+    public function addForm(){
         return redirect()->route('autoresponder.list');
         return view('admin.autoresponder.add');
     }
-    /* End Method add_form */
+    /* End Method addForm */
 
     /*
-    Method Name:    create_record
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Method Name:    createRecord
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To add new template detailsinto database
     Params:         [subject, template_name, template, status]
 
     */
-    public function create_record(Request $request){
+    public function createRecord(Request $request){
         return redirect()->route('autoresponder.list');
         $request->validate(['subject' => 'required|max:200', 'template_name' => 'required|max:200', 'template' => 'required', 'status' => 'required']);
         try {
@@ -75,12 +75,12 @@ class AutoResponderController extends Controller
                 ->with('message', $e->getMessage());
         }
     }
-    /* End Method create_record */
+    /* End Method createRecord */
 
     /*
     Method Name:    edit_form
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        Form to update template details
     Params:         [id]
     */
@@ -93,13 +93,13 @@ class AutoResponderController extends Controller
     /* End Method edit_form */
 
     /*
-    Method Name:    update_record
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Method Name:    updateRecord
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To update template details 
     Params:         [edit_record_id, subject, template_name, template, status]
     */
-    public function update_record(Request $request){
+    public function updateRecord(Request $request){
         $request->validate(['subject' => 'required|max:200', 'template' => 'required']);
         try {
             $data = [
@@ -117,16 +117,16 @@ class AutoResponderController extends Controller
                 ->with('message', $e->getMessage());
         }
     }
-    /* End Method update_record */
+    /* End Method updateRecord */
 
     /*
-    Method Name:    del_record
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Method Name:    delRecord
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To delete the template
     Params:         [id]
     */
-    public function del_record($id){
+    public function delRecord($id){
         return redirect()->route('autoresponder.list');
         try {
             AutoResponder::where('id', $id)->delete();
@@ -140,16 +140,16 @@ class AutoResponderController extends Controller
                 ->with('message', $ex->getMessage());
         }
     }
-    /* End Method del_record */
+    /* End Method delRecord */
 
     /*
-    Method Name:    change_status
-    Developer:      Shine Dezign
-    Created Date:   2021-08-19 (yyyy-mm-dd)
+    Method Name:    changeStatus
+    Developer:      Whmcs Global
+    Created Date:   2022-04-11 (yyyy-mm-dd)
     Purpose:        To change the status of template by id
     Params:         [id, status]
     */
-    public function change_status(Request $request) {
+    public function changeStatus(Request $request) {
         return redirect()->route('autoresponder.list'); 
         $autoresponder = AutoResponder::find($request->id);
         $autoresponder->status = $request->status;
@@ -159,5 +159,5 @@ class AutoResponderController extends Controller
             ->with('status', 'success')
             ->with('message', 'Auto responder template ' . Config::get('constants.SUCCESS.STATUS_UPDATE'));
     }
-    /* End Method change_status */
+    /* End Method changeStatus */
 }
