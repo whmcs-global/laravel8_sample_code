@@ -3,42 +3,91 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
+use Spatie\Permission\Traits\HasRoles;
+use Laravel\Passport\HasApiTokens;
+// use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable 
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use Notifiable, HasApiTokens, HasRoles, Sortable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
+    protected $fillable = [      
+        'first_name', 
+        'middle_name',
+        'last_name',
+		'email',
+		'password',
+		'social_type',
+        'remember_token',
+        'social_id',
+        'is_deleted',
+		'created_at',
+		'updated_at',
+		'status',
+    ];
+	
+	public $sortable = [ 
+		'id',
+        'first_name', 
+        'last_name',
+		'email',
+		'social_type',
+		'created_at',
+		'status',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributes that should be hidden for arrays.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
     ];
 
     /**
-     * The attributes that should be cast.
+     * The attributes that should be cast to native types.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+	
+    public $timestamps = true;
+	
+	public function user_detail(){
+	    return $this->hasOne(UserDetails::class);
+	}
+    public function getLastNameAttribute($value)
+    {
+        return ucfirst($value);
+	}
+	
+    public function getFirstNameAttribute($value)
+    {
+        return ucfirst($value);
+	}
+    public function setLastNameAttribute($value)
+    {
+        return strtolower($value);
+	}
+	
+    public function setFirstNameAttribute($value)
+    {
+        return strtolower($value);
+	}
+    public function getFullNameAttribute($value)
+    {
+        return "{$this->first_name} {$this->last_name}";
+	}
 }
